@@ -1,0 +1,68 @@
+Assignment 2.4
+Problem Statement 1: Write a Python Program(with class concepts) to find the area of the triangle using the below formula. area = (s(s-a)(s-b)(s-c)) * 0.5 Function to take the length of the sides of triangle 
+from user should be defined in the parent class and function to calculate the area should be defined in subclass.
+
+#Parent Class
+class Trigon:
+    #constructor
+    def __init__(self, sides_no):
+        self.n = sides_no
+        self.sides = list()
+       
+    #function to take length of the traingle
+    def enterLengthSides(self):
+        for i in range(self.n):
+            side  = float(input("Enter length of the side "+str(i+1)+" : "))
+            self.sides.append(side)
+    #function to display the traingle length
+    def printLengthSides(self):
+        for i in range(self.n):
+            print("Side",i+1,"is",self.sides[i])
+
+#Subclass            
+class Triangle(Trigon):
+    #constructor
+    def __init__(self):
+        Trigon.__init__(self,3)
+    #function to calculate the area of the traingle
+    def findTraingleArea(self):
+        a, b, c = self.sides
+        # semi-perimeter calculation
+        s = (a + b + c) / 2
+        area = (s*(s-a)*(s-b)*(s-c)) ** 0.5
+        print('The area of the triangle is %0.2f' %area)
+
+triangle = Triangle()
+
+triangle.enterLengthSides()
+triangle.printLengthSides()
+triangle.findTraingleArea()
+
+#Output
+Enter length of the side 1 : 5
+Enter length of the side 2 : 2
+Enter length of the side 3 : 4
+Side 1 is 5.0
+Side 2 is 2.0
+Side 3 is 4.0
+The area of the triangle is 3.80
+
+Problem Statement 2: Write a function filter_long_words() that takes a list of words and an integer n and returns the 
+list of words that are longer than n.
+
+def filter_long_words(listWords, n):
+    longer_then_nlist =[]
+    #iterate in the listWords
+    for word in listWords:
+        #compare to check if the length is more then n
+        if(n < len(word)):
+            #append in the list
+            longer_then_nlist.append(word)
+    return longer_then_nlist
+
+
+filter_long_words(["Abhinav", "Acadgild", "Sinha", "Machine Learning", "Data Science"], 9)       
+    
+#Output
+['Machine Learning', 'Data Science']
+    
